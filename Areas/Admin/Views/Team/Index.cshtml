@@ -1,0 +1,72 @@
+﻿@using PraktikaBeTemplate.Model;
+@model List<Team>
+
+@{
+    int count = 0;
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+
+
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Team Table</h4>
+                    <a asp-action="create" asp asp-controller="team" class="btn btn-success">Create</a>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                           NO
+                                        </th>
+                                        <th>
+                                        Name
+                                        </th>
+                                        <th>
+                                            Image
+                                        </th>
+                                        <th>
+                                Description
+                                        </th>
+                                        <th>
+                                     Settings
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                   @foreach (Team team in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                    
+                                            <td>
+                                               @count
+                                            </td>
+                                            <td>
+                                             @team.Name
+                                            </td>
+                                            <td class="py-1">
+                                                <img src="~/assets/img/@team.Image" alt="image" />
+                                            </td>
+                                            <td>
+                                         @team.Description
+                                            </td>
+                                            <td>
+                                              <a asp-action="Update" asp-controller="team" asp-route-id="@team.Id" class="btn btn-warning">Update</a>
+                                                <a asp-action="Delete" asp-controller="team" asp-route-id="@team.Id" class="btn btn-warning">Delete</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                 
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
